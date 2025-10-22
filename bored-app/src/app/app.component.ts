@@ -15,12 +15,12 @@ import { CurrencyComponent } from './components/currency.component';
     InsultComponent,
     FactsComponent,
     PokemonComponent,
-    CurrencyComponent
+    CurrencyComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'Fun API Explorer';
+  title = 'Bored App';
   currentYear = new Date().getFullYear();
 }
