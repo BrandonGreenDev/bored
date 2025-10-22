@@ -1,0 +1,29 @@
+<section class="facts-section section">
+  <div class="container">
+    <div class="card facts-card fade-in">
+      <div class="section-header">
+        <h2>🤓 Useless Facts</h2>
+        <p>Learn something completely useless today</p>
+      </div>
+
+      <div class="content">
+        <div *ngIf="loading" class="spinner"></div>
+
+        <div *ngIf="!loading && fact" class="fact-content">
+          <p class="fact-text">{{ fact }}</p>
+        </div>
+
+        <div *ngIf="error" class="error">
+          <p>{{ error }}</p>
+        </div>
+      </div>
+
+      <button
+        class="btn btn-primary"
+        (click)="getNewFact()"
+        [disabled]="loading">
+        {{ loading ? 'Loading...' : 'Get Another Fact' }}
+      </button>
+    </div>
+  </div>
+</section>

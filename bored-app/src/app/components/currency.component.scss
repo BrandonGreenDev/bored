@@ -1,0 +1,159 @@
+.currency-section {
+  background: linear-gradient(135deg, #86B0BD 0%, #6a94a1 100%);
+  padding: 4rem 0;
+}
+
+.currency-card {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-header {
+  margin-bottom: 2rem;
+
+  h2 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+  }
+}
+
+.converter {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+
+  .converter-input,
+  .converter-select {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+
+    label {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+    }
+
+    .amount-input,
+    .currency-select {
+      padding: 0.75rem;
+      border: 2px solid var(--secondary);
+      border-radius: 8px;
+      font-size: 1rem;
+      min-width: 200px;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+    }
+
+    .currency-select {
+      cursor: pointer;
+    }
+  }
+}
+
+.content {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.rates-content {
+  width: 100%;
+
+  .last-update {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+
+    .rate-item {
+      background: var(--background);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px var(--shadow);
+      }
+
+      .rate-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+
+        .rate-flag {
+          font-size: 1.5rem;
+        }
+
+        .rate-code {
+          font-weight: 700;
+          color: var(--text-dark);
+          font-size: 1.1rem;
+        }
+      }
+
+      .rate-value {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        .converted-amount {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--accent);
+        }
+
+        .rate-label {
+          font-size: 0.85rem;
+          color: var(--text-light);
+        }
+      }
+    }
+  }
+}
+
+.error {
+  color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+  .converter {
+    flex-direction: column;
+    align-items: stretch;
+
+    .converter-input,
+    .converter-select {
+      .amount-input,
+      .currency-select {
+        min-width: 100%;
+      }
+    }
+  }
+
+  .rates-content .rates-grid {
+    grid-template-columns: 1fr;
+  }
+}

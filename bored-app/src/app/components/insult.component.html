@@ -1,0 +1,29 @@
+<section class="insult-section section">
+  <div class="container">
+    <div class="card insult-card fade-in">
+      <div class="section-header">
+        <h2>😈 Evil Insult Generator</h2>
+        <p>For entertainment purposes only!</p>
+      </div>
+
+      <div class="content">
+        <div *ngIf="loading" class="spinner"></div>
+
+        <div *ngIf="!loading && insult" class="insult-content">
+          <p class="insult-text">{{ insult }}</p>
+        </div>
+
+        <div *ngIf="error" class="error">
+          <p>{{ error }}</p>
+        </div>
+      </div>
+
+      <button
+        class="btn btn-accent"
+        (click)="getNewInsult()"
+        [disabled]="loading">
+        {{ loading ? 'Loading...' : 'Generate Insult' }}
+      </button>
+    </div>
+  </div>
+</section>

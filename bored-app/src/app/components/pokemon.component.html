@@ -1,0 +1,74 @@
+<section class="pokemon-section section">
+  <div class="container">
+    <div class="card pokemon-card fade-in">
+      <div class="section-header">
+        <h2>⚡ Random Pokémon</h2>
+        <p>Discover a random Pokémon from the Pokédex</p>
+      </div>
+
+      <div class="content">
+        <div *ngIf="loading" class="spinner"></div>
+
+        <div *ngIf="!loading && pokemon" class="pokemon-content">
+          <div class="pokemon-image">
+            <img
+              [src]="pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default"
+              [alt]="pokemon.name"
+              class="fade-in">
+          </div>
+
+          <div class="pokemon-info">
+            <h3 class="pokemon-name">{{ pokemon.name | titlecase }}</h3>
+            <p class="pokemon-id">#{{ pokemon.id.toString().padStart(3, '0') }}</p>
+
+            <div class="pokemon-types">
+              <span
+                *ngFor="let type of pokemon.types"
+                class="type-badge"
+                [style.background-color]="getTypeColor(type.type.name)">
+                {{ type.type.name | titlecase }}
+              </span>
+            </div>
+
+            <div class="pokemon-stats">
+              <div class="stat-row">
+                <span class="stat-label">Height:</span>
+                <span class="stat-value">{{ pokemon.height / 10 }}m</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">Weight:</span>
+                <span class="stat-value">{{ pokemon.weight / 10 }}kg</span>
+              </div>
+            </div>
+
+            <div class="pokemon-base-stats">
+              <h4>Base Stats</h4>
+              <div *ngFor="let stat of pokemon.stats" class="base-stat">
+                <span class="stat-name">{{ stat.stat.name | titlecase }}:</span>
+                <div class="stat-bar-container">
+                  <div
+                    class="stat-bar"
+                    [style.width.%]="(stat.base_stat / 255) * 100"
+                    [style.background-color]="stat.base_stat > 100 ? 'var(--primary)' : 'var(--accent)'">
+                  </div>
+                  <span class="stat-number">{{ stat.base_stat }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="error" class="error">
+          <p>{{ error }}</p>
+        </div>
+      </div>
+
+      <button
+        class="btn btn-accent"
+        (click)="getRandomPokemon()"
+        [disabled]="loading">
+        {{ loading ? 'Loading...' : 'Find Another Pokémon' }}
+      </button>
+    </div>
+  </div>
+</section>

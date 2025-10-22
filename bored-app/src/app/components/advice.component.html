@@ -1,0 +1,29 @@
+<section class="advice-section section">
+  <div class="container">
+    <div class="card advice-card fade-in">
+      <div class="section-header">
+        <h2>💡 Advice Slip</h2>
+        <p>Get random advice to brighten your day</p>
+      </div>
+
+      <div class="content">
+        <div *ngIf="loading" class="spinner"></div>
+
+        <div *ngIf="!loading && advice" class="advice-content">
+          <p class="advice-text">"{{ advice }}"</p>
+        </div>
+
+        <div *ngIf="error" class="error">
+          <p>{{ error }}</p>
+        </div>
+      </div>
+
+      <button
+        class="btn btn-primary"
+        (click)="getNewAdvice()"
+        [disabled]="loading">
+        {{ loading ? 'Loading...' : 'Get New Advice' }}
+      </button>
+    </div>
+  </div>
+</section>
