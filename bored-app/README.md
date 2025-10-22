@@ -1,4 +1,4 @@
-# Fun API Explorer (Bored App)
+# (Bored App)
 
 A modern Angular application that demonstrates integration with multiple public APIs, providing an entertaining and educational showcase of API consumption patterns and Angular 17's standalone component architecture.
 

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//mnt/c/Users/jk3_2/Desktop/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
